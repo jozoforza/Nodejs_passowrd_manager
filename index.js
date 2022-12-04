@@ -24,6 +24,14 @@ while(true){
         case "newTable":
             await createTable()
             break
+        case "help":
+            console.log(
+            `
+exit - exit the app
+all - display all passswords
+new - insert new password into the db
+newTable - creates table for saving passwords`)
+            break
         default:
             console.log(`no such command as: ${input}`)
             break
