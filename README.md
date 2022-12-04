@@ -1,6 +1,6 @@
 # Nodejs password manager
 
-Simple no encrtption password manager, recomend to protect sqlite db with:
+Simple no encrytption password manager, recomend to protect sqlite db with:
 
 ```
 chown 0 passwords.db
@@ -14,4 +14,4 @@ chmod 0 passwords.db
 - new (creates new password with given information)
 - newTable (creates table - only needed when first time opening the app)
 - del (deletes password with given id)
-- search (searches for password provider including the given string)
+- search (searches for passwords with providers including the given string)
