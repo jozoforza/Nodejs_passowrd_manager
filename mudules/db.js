@@ -64,4 +64,24 @@ function createTable(){
     })
 }
 
-module.exports={db, dbAll, dbInsert, createTable}
+
+delQuery = `DELETE FROM passwords WHERE id=?`
+function delPassword(id){
+    return new Promise((resolve, reject) => {
+        db.run(delQuery,[id],function(err){
+            if(err){
+                if(err.errno  == 1){
+                    console.log('you have already created a table')
+                }else{
+                    console.log(err.message)
+                }
+                resolve()         
+            }else{
+                console.log('successfully deleted password')
+                resolve()
+            }
+        })
+    })
+}
+
+module.exports={db, dbAll, dbInsert, createTable, delPassword}

@@ -1,7 +1,7 @@
 console.log("im js script")
 const prompt = require('prompt-sync')({sigint: true});
 const sqlite3 = require('sqlite3').verbose();
-const {db, dbAll, dbInsert, createTable} = require('./mudules/db')
+const {db, dbAll, dbInsert, createTable, delPassword} = require('./mudules/db')
 
 
 async function startApp(){
@@ -24,10 +24,15 @@ while(true){
         case "newTable":
             await createTable()
             break
+        case "del":
+            const id = prompt("password id: ")
+            await delPassword(id)
+            break
         case "help":
             console.log(
             `
 exit - exit the app
+del - del password with given id
 all - display all passswords
 new - insert new password into the db
 newTable - creates table for saving passwords`)
