@@ -1,7 +1,7 @@
 console.log("im js script")
 const prompt = require('prompt-sync')({sigint: true});
 const sqlite3 = require('sqlite3').verbose();
-const {db, dbAll, dbInsert, createTable, delPassword} = require('./mudules/db')
+const {db, dbAll, dbInsert, createTable, delPassword, dbSearch} = require('./mudules/db')
 
 
 async function startApp(){
@@ -27,6 +27,10 @@ while(true){
         case "del":
             const id = prompt("password id: ")
             await delPassword(id)
+            break
+        case "search":
+            const search = prompt("search for provider of password: ")
+            await dbSearch(search)
             break
         case "help":
             console.log(

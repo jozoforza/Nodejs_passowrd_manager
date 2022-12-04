@@ -25,6 +25,17 @@ function dbAll(){
             });
     })
 }
+function dbSearch(search){
+    return new Promise((resolve, reject) => {
+        db.all(selectQuery , (err , data) => {
+            const searchResults = data.filter(passwordObject => 
+                passwordObject.PROVIDER.toLowerCase().includes(search.toLowerCase())
+            )
+            console.table(searchResults)
+            resolve()
+            });
+    })
+}
 insertQuery = `INSERT INTO passwords(provider, username, password) VALUES(?,?,?)`
 function dbInsert(provider, username, password) {
     return new Promise((resolve, reject) => {
@@ -84,4 +95,4 @@ function delPassword(id){
     })
 }
 
-module.exports={db, dbAll, dbInsert, createTable, delPassword}
+module.exports={db, dbAll, dbInsert, createTable, delPassword, dbSearch}
